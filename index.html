@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>俄罗斯方块</title>
+</head>
+<style type="text/css">
+	.container{
+		width:120px;
+		height:210px;
+		border:1px red solid;
+		position: relative;
+	}
+	.red{
+		background-color: red;
+	}
+	.container div{
+		border:1px #E6E6E6 solid;
+		position: absolute;
+		width:10px;
+		height:10px;
+	}
+	.gray{
+		background-color: #808080;
+	}
+
+</style>
+<body>
+	<div class="container" id="container">
+		<div class="red"></div>
+		<div class="gray"></div>
+	</div>
+	<button onclick="startGame();">开始游戏</button>
+	<button onclick="leftBlock();">左移</button>
+	<button onclick="downBlock();">下移</button>
+	<button onclick="rightBlock();">右移</button>
+
+</body>
+<script type="text/javascript" src="Block.js"></script>
+<script type="text/javascript" src="GameTimer.js"></script>
+<script type="text/javascript" src="Model.js"></script>
+<script type="text/javascript" src="Controller.js"></script>
+<script type="text/javascript" src="View.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</html>
