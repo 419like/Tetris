@@ -42,7 +42,7 @@ let Block = function() {
         _this.down = function(){
             let tempP = JSON.stringify(_this.position)
             let prePosition = _this.position;
-            let targetPosition = x:_this.position+1;  
+            let targetPosition = {x:_this.position.x,y:_this.position.y+1};  
             checkTarget();          
         }
 };
