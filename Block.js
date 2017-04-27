@@ -40,7 +40,9 @@ let Block = function() {
         _this.form = types[randomNum2]; 
         _this.position = { x: 1, y: 0 };
         _this.down = function(){
-            let prePositionY = _this.position.y;
-            let targetPositionY = _this.position.y+1;            
+            let tempP = JSON.stringify(_this.position)
+            let prePosition = _this.position;
+            let targetPosition = x:_this.position+1;  
+            checkTarget();          
         }
 };
