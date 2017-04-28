@@ -13,19 +13,18 @@ let Block = function() {
             x: 3,
             y: 1
         }];
-
         let type1form2 = [{
-            x: 0,
-            y: 1
+            x: 1,
+            y: 0
         }, {
             x: 1,
             y: 1
         }, {
-            x: 2,
-            y: 1
+            x: 1,
+            y: 2
         }, {
-            x: 3,
-            y: 1
+            x: 1,
+            y: 3
         }];
 
         let type1 = [type1form1, type1form2];
@@ -34,15 +33,26 @@ let Block = function() {
         let blockTypes = [type1, type2];
         
         let _this = this;
-        let randomNum1 = parseInt(Math.random() * blockTypes.length);
-        let types = blockTypes[randomNum1];
-        let randomNum2 = parseInt(Math.random() * blockTypes.length);
-        _this.form = types[randomNum2]; 
-        _this.position = { x: 1, y: 0 };
-        _this.down = function(){
-            let tempP = JSON.stringify(_this.position)
-            let prePosition = _this.position;
-            let targetPosition = {x:_this.position.x,y:_this.position.y+1};  
-            checkTarget();          
+        _this.typeNum = parseInt(Math.random() * blockTypes.length);
+        _this.forms = blockTypes[_this.typeNum];
+        _this.formNum = parseInt(Math.random() * _this.forms.length);
+        _this.form = _this.forms[_this.formNum];
+        _this.setNextForm = function(){
+            if(_this.formNum+1==_this.forms.length){
+                _this.formNum = 0;
+            }else{
+                _this.formNum++;               
+            }
+            _this.form = _this.forms[_this.formNum];
         }
+        _this.getNextForm = function(){
+            if(_this.formNum+1==_this.forms.length){
+                return _this.forms[0]
+            }else{
+                return _this.forms[_this.formNum+1]
+            }
+        }
+
+        _this.position = { x: 1, y: 0 };
+        
 };

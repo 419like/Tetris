@@ -24,6 +24,16 @@ let View = function(model) {
         for (var i = 0; i < arr.length; i++) {
             for (var j = 0; j < arr[i].length; j++) {
                 var type = arr[i][j] ? 'red' : 'gray';
+                if(arr[i][j]==1){
+                    type = 'green'
+                }
+                if(arr[i][j]==2){
+                    type = 'red'
+                }
+                if(arr[i][j]==0){
+                    type = 'gray'
+                }
+
                 containerStr += `<div class="` + type + `" style="left:` + 10 * i + `px;top:` + 10 * j + `px;"></div>`
             }
         }
