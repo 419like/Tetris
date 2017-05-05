@@ -49,18 +49,22 @@ let Model = function() {
     _this.checkHoleArray = function(){
         for (var j = 0; j < _this.holeArray[0].length-1; j++) {
             let tempArr = [];
-            for (var i = 1; i < _this.holeArray.length-1; i++) {
-                console.log(_this.holeArray[i][j]);
-                if(_this.holeArray[i][j]==2&&(j==_this.holeArray[i].length-1-2)){
-
-                    // console.log('下移')
-                }else{
-                    // break;
+            for (var i = 1; i < _this.holeArray.length; i++) {
+                if(_this.holeArray[i][j]==0){
+                    console.log('第'+j+'行没有填满')
+                    break;
+                }else if(tempArr.length==_this.holeArray.length-2){
+                    removeArrayLine(j);
+                    console.log('下移第'+j+'行')
                 }
                 tempArr.push(_this.holeArray[i][j]);
-
             }
-            console.log(JSON.stringify(tempArr))
+        }
+    }
+    let removeArrayLine = function(num){
+        for (var i = 0; i < _this.holeArray.length; i++) {
+            _this.holeArray[i].splice(num,1);
+            _this.holeArray[i].splice(0,0,0);
         }
     }
     _this.right = function() {

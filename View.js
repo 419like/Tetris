@@ -15,7 +15,6 @@ let View = function(model) {
                 y:block.position.y+item.y,
             }
             model.holeArray[position.x][position.y] = 1;
-            console.log('s');
         }   
         _this.render(model.holeArray);
     }
