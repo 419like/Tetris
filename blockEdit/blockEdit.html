@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>俄罗斯方块编辑器</title>
+</head>
+<style type="text/css">
+.transBox {
+    height: 100px;
+    width: 100px;
+    background-color: #E6E6E6;
+    margin: 10px;
+    position: relative;
+}
+
+.boxOut {
+    border: 1px solid #999999;
+    width: 120px;
+    display: inline-block;
+}
+
+.transItem {
+    border: 1px solid #0080FF;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+}
+</style>
+
+<body>
+    <h1>俄罗斯方块编辑器</h1>
+    <div id="container">
+        <div>
+            <h2>种类：1</h2>
+            <div class="boxOut">
+                <h3>形态：1</h3>
+                <div class="transBox">
+                    <div class="transItem" style="top:25px;left:25px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../node_modules/._jquery@3.2.1@jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="blockEdit.js"></script>
+
+</html>
