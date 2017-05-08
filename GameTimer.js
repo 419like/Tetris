@@ -5,9 +5,10 @@ let GameTimer = function(){
 		timeState = 'playing';
 		_this.loop(action);
 	}
-	_this.loop = function(){
+	_this.loop = function(action){
 		setTimeout(function() {
 			if(timeState=='playing'){
+				action();
 				_this.loop(action);
 				console.log('playing');
 			}

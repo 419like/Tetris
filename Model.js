@@ -64,7 +64,11 @@ let Model = function() {
     let removeArrayLine = function(num){
         for (var i = 0; i < _this.holeArray.length; i++) {
             _this.holeArray[i].splice(num,1);
-            _this.holeArray[i].splice(0,0,0);
+            if(i==0||i==_this.holeArray.length-1){
+                _this.holeArray[i].splice(0,0,2);
+            }else{
+                _this.holeArray[i].splice(0,0,0);
+            }
         }
     }
     _this.right = function() {

@@ -31,7 +31,11 @@ let Controller = function(model,view) {
     }
     _this.start = function(){
         _this.addBlock();
+        _this.autoDown();
     	// gameTime.start(_this.fall);
+    }
+    _this.autoDown = function(){
+        gameTime.start(_this.down);
     }
     _this.render = function(){
         view.render(model.holeArray);
