@@ -4,10 +4,13 @@ let Controller = function(model, view) {
     let blockListData;
     _this.initStage = function() {
         $.ajax({
-            url: "/blockList",
+            url: "blockList.json",
             success: function(result) {
-                console.log(JSON.parse(result))
-                model.blockListData = JSON.parse(result);
+                // 兼容cordova
+                if((typeof result)=='string'){
+                    result = JSON.parse(result)
+                }
+                model.blockListData = result;
                 view.initStage();
             }
         });

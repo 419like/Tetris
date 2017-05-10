@@ -2,7 +2,7 @@ console.log('blockEdit')
 
 let container = $('#container')
 let blockList;
-let holeArr = initHoleArr();
+let holeArray = initHoleArr();
 
     $.ajax({
         url: "/blockList",
@@ -22,8 +22,18 @@ function render() {
             htmlStr += `<div class="boxOut">
                 <h3>形态：` + (j + 1) + `</h3>
                 <div class="transBox">`
-            for (var h = 0; h < blockList[i][j].length; h++) {
-                htmlStr += `<div class="transItem" style="top:` + 25 * blockList[i][j][h].y + `px;left:` + 25 * blockList[i][j][h].x + `px;"></div>`
+            tempArray = setBlockDataIn(holeArray,blockList[i][j]);
+            for (var x = 0; x < tempArray.length; x++) {
+                for (var y = 0; y < tempArray[x].length; y++) {
+                    let colorStr;
+                    if(tempArray[x][y]==1){
+                        colorStr = 'red'
+                    }else{
+                        colorStr = ''
+                    }
+                    htmlStr += `<div class="transItem `+colorStr+`" style="top:` + 25 * y + `px;left:` + 25 * x + `px;">`+x+`,`+y+`</div>`
+                }
+                
             }
             htmlStr += `</div>
             </div>`
@@ -33,8 +43,18 @@ function render() {
     container.html(htmlStr);
 }
 
+function setBlockDataIn(holeArray,item){
+    let tempArray = JSON.parse(JSON.stringify(holeArray));
+    for (var i = 0; i < item.length; i++) {
+        
+        tempArray[item[i].x][item[i].y] = 1;
+    }
+    
+    return tempArray;
+}
 
-let initHoleArr = function() {
+
+function initHoleArr() {
     let holeArray = [];
     for (var i = 0; i < 4; i++) {
         var tempArr = []
