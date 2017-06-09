@@ -1,4 +1,9 @@
 let Controller = function(model, view) {
+    const DOWN = 40;
+    const UP = 38;
+    const LEFT = 37;
+    const RIGHT = 39;
+    const SPACE = 32;
     let _this = this;
     let gameTime = new GameTimer();
     let blockListData;
@@ -14,12 +19,36 @@ let Controller = function(model, view) {
                 view.initStage();
             }
         });
+        $('html').keyup(function(e) {
+            /* Act on the event */
+            let key= e.keyCode;
+            if (key==LEFT) {
+                _this.left();
+            }
+            if (key==RIGHT) {
+                _this.right();
+            }
+            if (key==DOWN) {
+                _this.down();
+            }
+            if (key==UP) {
+                _this.transform();
+            }
+            if (key==SPACE) {
+                _this.fall();
+            }
+
+        });
+    }
+    _this.gameover = function(){
+        gameTime.timeState = 'stop';
     }
     _this.addBlock = function() {
         let block = new Block();
         block.init(model);
-        model.currentBlock = block;
-        view.addBlock(model.currentBlock);
+        model.addBlock(block);
+        // model.currentBlock = block;
+        // view.addBlock(model.currentBlock);
     }
     _this.down = function() {
         model.down();
@@ -39,9 +68,12 @@ let Controller = function(model, view) {
         _this.render();
     }
     _this.fall = function() {
+        model.toEnd();
+        _this.render();
         console.log('falling');
     }
     _this.start = function() {
+        debugger
         _this.addBlock();
         _this.autoDown();
         // gameTime.start(_this.fall);
