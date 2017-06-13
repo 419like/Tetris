@@ -19,7 +19,7 @@ let Controller = function(model, view) {
                 view.initStage();
             }
         });
-        $('html').keyup(function(e) {
+        $('html').keydown(function(e) {
             /* Act on the event */
             let key= e.keyCode;
             if (key==LEFT) {
@@ -73,7 +73,6 @@ let Controller = function(model, view) {
         console.log('falling');
     }
     _this.start = function() {
-        debugger
         _this.addBlock();
         _this.autoDown();
         // gameTime.start(_this.fall);

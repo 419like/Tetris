@@ -1,5 +1,6 @@
 let Model = function() {
     let _this = this;
+    _this.totalScore = 0;
     _this.setController = function(controller) {
         _this.controller = controller;
     }
@@ -63,6 +64,7 @@ _this.setCurrentBlockDown = function() {
     }
 }
 _this.checkHoleArray = function() {
+    var score = 0;
     for (var j = 0; j < _this.holeArray[0].length - 1; j++) {
         let tempArr = [];
         for (var i = 1; i < _this.holeArray.length; i++) {
@@ -70,10 +72,13 @@ _this.checkHoleArray = function() {
                 break;
             } else if (tempArr.length == _this.holeArray.length - 2) {
                 removeArrayLine(j);
+                score++;
             }
             tempArr.push(_this.holeArray[i][j]);
         }
     }
+    _this.totalScore += score;
+    $('#score').html(_this.totalScore);
 }
 let removeArrayLine = function(num) {
     for (var i = 0; i < _this.holeArray.length; i++) {
